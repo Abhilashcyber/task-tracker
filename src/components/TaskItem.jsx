@@ -1,27 +1,10 @@
 // src/components/TaskItem.js
 
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
 const TaskItem = ({ task, updateTask, deleteTask, toggleComplete }) => {
-  const [isDisappearing, setIsDisappearing] = useState(false);
-
-  useEffect(() => {
-    if (task.completed) {
-      // Start the disappearing process
-      setIsDisappearing(true);
-
-      // After the animation ends, delete the task
-      const timeout = setTimeout(() => {
-        deleteTask(task.id);
-      }, 500); // This should match the CSS transition duration
-
-      // Cleanup timeout if the component unmounts early
-      return () => clearTimeout(timeout);
-    }
-  }, [task.completed, deleteTask, task.id]);
-
   return (
-    <li className={`task-item ${task.completed ? 'completed' : ''} ${isDisappearing ? 'disappearing' : ''}`}>
+    <li className={`task-item ${task.completed ? 'completed' : ''}`}>
       <div className="task-content">
         {!task.completed && (
           <button className="mark-done-btn" onClick={() => toggleComplete(task.id)}>

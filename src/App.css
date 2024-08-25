@@ -86,13 +86,10 @@ ul {
   transition: all 0.5s ease;
 }
 
-.task-item.completed.disappearing {
-  opacity: 0;
-  transform: scale(0.8);
-  pointer-events: none; /* Prevent interaction with the task after it starts disappearing */
-  margin-bottom: 0; /* Avoid taking up space after it disappears */
-  height: 0;
-  padding: 0;
+.task-item.completed .task-content {
+  text-decoration: line-through;
+  opacity: 0.6;
+  transition: all 0.5s ease;
 }
 
 .task-content {
